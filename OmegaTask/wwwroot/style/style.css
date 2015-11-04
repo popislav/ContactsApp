@@ -1,0 +1,16 @@
+﻿input.ng-invalid.ng-touched {
+     background-color: lightcoral;
+}
+input.ng-valid.ng-touched {
+     background-color: lightgreen;
+}
+textarea.ng-invalid.ng-touched {
+     background-color: lightcoral;
+}
+textarea.ng-valid.ng-touched {
+     background-color: lightgreen;
+}
+.empty-space{
+    height: 25pt; 
+    visibility: hidden;
+}

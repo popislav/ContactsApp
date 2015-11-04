@@ -1,0 +1,66 @@
+﻿<div class="navbar navbar-default">
+    <div class="container">
+        <h3>Add Contact</h3>
+    </div>
+</div>
+<div>
+    <form role="form" name="formAdd" novalidate>
+            <div class="bg-danger validationErrors" ng-show="validationErrors">
+                <ul>
+                    <li ng-repeat="error in validationErrors">{{error}}</li>
+                </ul>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <h4>About</h4>
+
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input name="name" type="text" class="form-control" id="name" ng-model="contact.Name" ng-required="true">
+                    </div>
+                    <div class="form-group">
+                        <label for="surname">Surname:</label>
+                        <input name="surname" type="text" class="form-control" id="surname" ng-model="contact.Surname">
+                    </div>
+                    <div class="form-group">
+                        <label for="city">City:</label>
+                        <input name="city" type="text" class="form-control" id="city" ng-model="contact.City">
+                    </div>
+                    <div class="form-group">
+                        <label for="info">Info:</label>
+                        <textarea name="info" rows="2" class="form-control" id="info" ng-model="contact.Info"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="image">Image URL:</label>
+                        <input name="image" type="text" class="form-control" id="image" ng-model="contact.Image">
+                    </div>
+                </div>
+                <div class="col-md-5 pull-right">
+                    <h4>Numbers</h4>
+                    <div ng-repeat="number in numbers">
+                        <div class="form-group">
+                            <label for="number">Number {{$index + 1}}:</label>
+                            <input name="number" type="text" class="form-control" id="number" ng-model="number.numb" ng-required="true">
+                        </div>
+                        <div class="form-group">
+                            <label for="type">Type:</label>
+                            <input name="type" type="text" class="form-control" id="type" ng-model="number.type">
+                        </div>
+                        <div class="form-group">
+                            <label for="desc">Description:</label>
+                            <input name="desc" type="text" class="form-control" id="desc" ng-model="number.desc">
+                        </div>
+                        <hr />
+                    </div>
+                    <button class="btn btn-secondary" ng-click="addNewNumber()">Add new number</button>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-5">
+                    <a href="/" class="btn btn-default">Cancel</a>
+                    <button type="submit" ng-disabled="formAdd.$invalid" ng-click="add()" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>

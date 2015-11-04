@@ -1,0 +1,39 @@
+﻿<div class="navbar navbar-default">
+    <div class="container">
+        <h3>Contact List</h3>
+    </div>
+</div>
+<div>
+    <label>Search: <input ng-model="search.$"></label> <label> Search numb: <input ng-model="searchText"></label>
+    <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>City</th>
+                    <th>All Numbers</th>
+                    <th>Action:</th>
+                    <th>
+                        <a href="/contacts/add" class="btn btn-success">Add New Contact</a>
+                    <th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="contact in contacts | filter:search | orderBy: 'Name'">
+                    <td>{{contact.Name}}</td>
+                    <td>{{contact.Surname}}</td>
+                    <td>{{contact.City}}</td>
+                    <td>
+                        <div ng-repeat="number in numbers | filter: searchText"><p ng-if="number.ContactId==contact.Id">{{number.numb}}</p></div>
+                    </td>
+                    <td>
+                        <a href="/contacts/edit/{{contact.Id}}" class="btn btn-warning">Edit</a>
+                    </td>
+                    <td>
+                        <a href="/contacts/delete/{{contact.Id}}" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</div>
+
