@@ -11,6 +11,6 @@ and deploy on Client-side: /wwwroot/app.js
 In /db folder: .mdf and .ldf db files. According to ConnectionString from /OmegaTask/Config.json, ContactsDatabase.mdf and .ldf files are created. 
 (you can copy these files somewhere on your computer, based on SQL Servera configuration)
 
-Communication through WEB API:
+WEB APP
 local:   localhost:port/api/contacts/, localhost:port/api/contacts/id
 		 localhost:port/api/numbers/, localhost:port/api/numbers/contactId
