@@ -4,7 +4,7 @@
     </div>
 </div>
 <div>
-    <label>Search: <input ng-model="search.$"></label> <label> Search numb: <input ng-model="searchText"></label>
+    <label>Search: <input ng-model="search"></label> 
     <table class="table table-striped">
             <thead>
                 <tr>
@@ -19,12 +19,12 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="contact in contacts | filter:search | orderBy: 'Name'">
+                <tr ng-repeat="contact in contacts | filter:search | orderBy: 'Name'"><!-- | filter:search  -->
                     <td>{{contact.Name}}</td>
                     <td>{{contact.Surname}}</td>
                     <td>{{contact.City}}</td>
                     <td>
-                        <div ng-repeat="number in numbers | filter: searchText"><p ng-if="number.ContactId==contact.Id">{{number.numb}}</p></div>
+                        <div ng-repeat="number in contact.Numbers"><p>{{number}}</p></div>
                     </td>
                     <td>
                         <a href="/contacts/edit/{{contact.Id}}" class="btn btn-warning">Edit</a>

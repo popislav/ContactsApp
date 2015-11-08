@@ -12,8 +12,19 @@
     contactsListController.$inject = ['$scope', 'Contacts', 'Number']; 
 
     function contactsListController($scope, Contacts, Number) {
-        $scope.numbers = Number.query();
-        $scope.contacts = Contacts.query();
+
+        $scope.contacts = Contacts.query({}, function (contacts) {
+            Number.query({}, function (numbers) {
+                contacts.forEach(function (contact) {
+                    contact.Numbers = [];
+                    numbers.forEach(function (number) {
+                        if (contact.Id == number.ContactId) {
+                            contact.Numbers.push(number.numb);
+                        }
+                    });
+                });
+            });
+        });
     }
 
     //Create/Add
@@ -26,7 +37,10 @@
         $scope.addNewNumber = function () {
             $scope.newNumber = new Number();
             $scope.numbers.push($scope.newNumber);
-        };
+        };        
+        $scope.removeNewNumber = function (index) {
+            $scope.numbers.splice(index, 1);
+        }
 
         $scope.add = function () {
             $scope.contact.$save(
@@ -57,7 +71,19 @@
     function contactsEditController($scope, $routeParams, $location, Contacts, Number) {
         $scope.contact = Contacts.get({ id: $routeParams.id });
         $scope.numbers = Number.query({ id: $routeParams.id });
+        //$scope.removeNumber = function (index) {
+        //    console.log(index);
+        //    console.log($scope.numbers);
+        //    console.log($scope.numbers[index]);
+        //    console.log($scope.numbers[index].ContactId);
+        //    $scope.numbers[index].$remove({ id: $scope.numbers[index].Id }, function () {
+        //        $scope.numbers.splice(index, 1);
+        //    });
+
+
+        }
         $scope.edit = function () {
+            console.log($scope.numbers);
             for (var i = 0; i < $scope.numbers.length; i++) {
                 if (i == $scope.numbers.length - 1) {
                     $scope.numbers[i].$save(function () {

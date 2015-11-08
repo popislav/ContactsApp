@@ -50,9 +50,13 @@
                             <label for="desc">Description:</label>
                             <input name="desc" type="text" class="form-control" id="desc" ng-model="number.desc">
                         </div>
+                        <div ng-if="$index !== 0">
+                            <span ng-click="removeNewNumber($index)" class="pull-right btn btn-danger glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
+                        </div>
+                        <br/>
                         <hr />
                     </div>
-                    <button class="btn btn-secondary" ng-click="addNewNumber()">Add new number</button>
+                    <button class="btn btn-secondary btn-small" ng-click="addNewNumber()">Add new number</button>
                 </div>
             </div>
             <hr />

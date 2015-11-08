@@ -11,10 +11,10 @@ module.exports = function (grunt) {
     grunt.initConfig({
         uglify: {
             //uncomment these lines to beautify client-side JS file
-            //options: {
-            //    mangle: false,
-            //    beautify: true
-            //},
+            options: {
+                mangle: false,
+                beautify: true
+            },
             my_target: {
                 files: { 'wwwroot/app.js': ['Scripts/app.js', 'Scripts/**/*.js'] }
             }
